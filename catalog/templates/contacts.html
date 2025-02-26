@@ -10,11 +10,11 @@
         <nav class="bg-dark text-white p-3 vh-110" style="width: 250px;">
             <h5 class="mb-4">Меню</h5>
             <ul class="nav flex-column">
-                <li class="nav-item"><a href="#" class="nav-link text-white">Главная</a></li>
+                <li class="nav-item"><a href="/home/" class="nav-link text-white">Главная</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white">Категории</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white">Каталог</a></li>
                 <li class="nav-item"><a href="#" class="nav-link text-white">Заказы</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white active bg-primary">Контакты</a></li>
+                <li class="nav-item"><a href="/contacts/" class="nav-link text-white active bg-primary">Контакты</a></li>
             </ul>
             <div class="mt-auto pt-3">
                 <div class="dropdown">
@@ -28,11 +28,11 @@
         </nav>
 
         <div class="container p-5">
-            <h2 class="text-center">Контакты</h2>
+            <h2 class="text-center">Свяжитесь с нами</h2>
             <div class="row mt-5 justify-content-center">
                 <div class="col-md-5">
                     <div class="p-3 border rounded" style="background-color: #f8f9fa;">
-                        <form method="post" action="" class="form-floating">
+                        <form method="post" action="/contacts/" class="form-floating">
                             {% csrf_token %}
                             <div class="mb-3">
                                 <label for="name" class="form-label">Имя</label>
