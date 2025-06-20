@@ -1,0 +1,44 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Яблоко",
+        "description": "Запретный плод Райских садов",
+        "image": "",
+        "category": 1,
+        "price": "99.98",
+        "created_at": "2025-06-20T00:28:02.540Z",
+        "updated_at": "2025-06-20T00:28:02.540Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "Помидоры",
+        "description": "Снаряд для забрасывания митингующих",
+        "image": "",
+        "category": 2,
+        "price": "69.69",
+        "created_at": "2025-06-20T00:37:48.328Z",
+        "updated_at": "2025-06-20T00:57:33.817Z"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "Фрукты",
+        "description": "Сладкие плоды древесных растений"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Овощи",
+        "description": "Плоды преимущественно недревесных растений и преимцщественно не сладкие"
+    }
+}
+]
