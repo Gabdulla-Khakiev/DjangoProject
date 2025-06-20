@@ -7,25 +7,7 @@
 </head>
 <body>
 <div class="d-flex">
-    <nav class="bg-dark text-white p-3 vh-100" style="width: 250px;">
-        <h5 class="mb-4">Меню</h5>
-        <ul class="nav flex-column">
-            <li class="nav-item"><a href="/home/" class="nav-link text-white {% if request.path == '/home/' %}active bg-primary{% endif %}">Главная</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-white">Категории</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-white">Каталог</a></li>
-            <li class="nav-item"><a href="#" class="nav-link text-white">Заказы</a></li>
-            <li class="nav-item"><a href="/contacts/" class="nav-link text-white {% if request.path == '/contacts/' %}active bg-primary{% endif %}">Контакты</a></li>
-        </ul>
-        <div class="mt-auto pt-3">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Пользователь</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Профиль</a></li>
-                    <li><a class="dropdown-item" href="#">Выход</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% include "includes/_sidebar.html" %}
 
     <div class="container-fluid p-4">
         {% block content %}{% endblock %}
