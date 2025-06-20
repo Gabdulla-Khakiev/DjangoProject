@@ -4,6 +4,7 @@
         <li class="nav-item"><a href="/home/" class="nav-link text-white {% if request.path == '/home/' %}active bg-primary{% endif %}">Главная</a></li>
         <li class="nav-item"><a href="#" class="nav-link text-white">Категории</a></li>
         <li class="nav-item"><a href="#" class="nav-link text-white">Каталог</a></li>
+        <li class="nav-item"><a href="{% url 'catalog:add_product' %}" class="nav-link text-white {% if request.path == '/add/' %}active bg-primary{% endif %}">Добавить товар</a></li>
         <li class="nav-item"><a href="#" class="nav-link text-white">Заказы</a></li>
         <li class="nav-item"><a href="/contacts/" class="nav-link text-white {% if request.path == '/contacts/' %}active bg-primary{% endif %}">Контакты</a></li>
     </ul>
