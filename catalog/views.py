@@ -1,35 +1,31 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import TemplateView, DetailView, CreateView, ListView
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from catalog.models import Product
 from catalog.forms import ProductForm
-from django.core.paginator import Paginator
 
 
-def home(request):
-    product_list = Product.objects.all().order_by('-created_at')
-    paginator = Paginator(product_list, 6)  # 6 товаров на страницу
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'home.html', {'page_obj': page_obj})
+class ProductListView(ListView):
+    model = Product
+    paginate_by = 6
+    ordering = ['-created_at']
+    # контекст по умолчанию: object_list
 
 
-def contacts(request):
-    if request.method == "POST":
+class ContactsView(TemplateView):
+    template_name = "catalog/contacts.html"
+
+    def post(self, request, *args, **kwargs):
         return HttpResponse("Мы с вами свяжемся.")
-    return render(request, "contacts.html")
 
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, "product_detail.html", {"product": product})
+class ProductDetailView(DetailView):
+    model = Product
+    # контекст по умолчанию: object
 
 
-def add_product(request):
-    if request.method == "POST":
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    else:
-        form = ProductForm()
-    return render(request, 'add_product.html', {'form': form})
+class AddProductView(CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy("catalog:home")
+    # шаблон: catalog/product_form.html

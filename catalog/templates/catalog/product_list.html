@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "catalog/base.html" %}
 
 {% load image_tags %}
 
@@ -11,7 +11,7 @@
     <p class="text-center">Интернет магазин флагманской электроники по завышенным ценам.</p>
 
     <div class="row mt-4 gap-4 justify-content-center">
-        {% for product in page_obj %}
+        {% for product in object_list %}
         <div class="col-md-3">
             <div class="card text-center h-100">
                 <img src="{{ product.image|default_image }}" class="card-img-top" alt="{{ product.name }}">
