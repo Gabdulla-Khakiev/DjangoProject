@@ -9,7 +9,6 @@ class ProductListView(ListView):
     model = Product
     paginate_by = 6
     ordering = ['-created_at']
-    # контекст по умолчанию: object_list
 
 
 class ContactsView(TemplateView):
@@ -21,11 +20,9 @@ class ContactsView(TemplateView):
 
 class ProductDetailView(DetailView):
     model = Product
-    # контекст по умолчанию: object
 
 
 class AddProductView(CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:home")
-    # шаблон: catalog/product_form.html
