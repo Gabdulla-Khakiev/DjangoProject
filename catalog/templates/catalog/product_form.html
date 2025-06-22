@@ -1,6 +1,12 @@
 {% extends "catalog/base.html" %}
 
-{% block title %}Добавление товара{% endblock %}
+{% block title %}
+{% if form.instance.pk %}
+    Редактирование товара
+{% else %}
+  Добавление товара
+{% endif %}
+{% endblock %}
 
 {% block content %}
 {% if form.instance.pk %}
