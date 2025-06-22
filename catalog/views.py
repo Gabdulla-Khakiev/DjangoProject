@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, DetailView, CreateView, ListView
+from django.views.generic import TemplateView, DetailView, CreateView, ListView, UpdateView, DeleteView
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from catalog.models import Product
@@ -26,3 +26,16 @@ class AddProductView(CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:home")
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:home')  # или на нужный тебе путь
+    # шаблон по умолчанию: catalog/product_form.html
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:home')  # куда редиректить после удаления
+    # шаблон по умолчанию: catalog/product_confirm_delete.html

@@ -3,7 +3,12 @@
 {% block title %}Добавление товара{% endblock %}
 
 {% block content %}
-<h2 class="text-center">Добавить новый товар</h2>
+{% if form.instance.pk %}
+  <h2 class="text-center mb-4">Редактировать товар</h2>
+{% else %}
+  <h2 class="text-center mb-4">Добавить новый товар</h2>
+{% endif %}
+
 <div class="row mt-5 justify-content-center">
     <div class="col-md-5">
         <div class="p-3 border rounded" style="background-color: #f8f9fa;">
@@ -35,7 +40,11 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Добавить</button>
-                <a href="{% url 'catalog:home' %}" class="btn btn-danger">Отмена</a>
+                {% if form.instance.pk %}
+                  <a href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-danger">Отмена</a>
+                {% else %}
+                  <a href="{% url 'catalog:home' %}" class="btn btn-danger">Отмена</a>
+                {% endif %}
             </form>
         </div>
     </div>
