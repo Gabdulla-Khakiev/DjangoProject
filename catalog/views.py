@@ -31,11 +31,9 @@ class AddProductView(CreateView):
 class ProductUpdateView(UpdateView):
     model = Product
     form_class = ProductForm
-    success_url = reverse_lazy('catalog:home')  # или на нужный тебе путь
-    # шаблон по умолчанию: catalog/product_form.html
+    success_url = reverse_lazy('catalog:home')
 
 
 class ProductDeleteView(DeleteView):
     model = Product
-    success_url = reverse_lazy('catalog:home')  # куда редиректить после удаления
-    # шаблон по умолчанию: catalog/product_confirm_delete.html
+    success_url = reverse_lazy('catalog:home')
