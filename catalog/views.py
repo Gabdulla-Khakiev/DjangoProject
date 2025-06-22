@@ -14,7 +14,7 @@ class ProductListView(ListView):
 class ContactsView(TemplateView):
     template_name = "catalog/contacts.html"
 
-    def post(self, request, *args, **kwargs):
+    def render_to_response(self, request, *args, **kwargs):
         return HttpResponse("Мы с вами свяжемся.")
 
 
