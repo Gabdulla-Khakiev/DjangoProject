@@ -1,58 +1,51 @@
 {% extends "catalog/base.html" %}
 
 {% block title %}
-{% if form.instance.pk %}
+  {% if form.instance.pk %}
     Редактирование товара
-{% else %}
-  Добавление товара
-{% endif %}
+  {% else %}
+    Добавление товара
+  {% endif %}
 {% endblock %}
 
 {% block content %}
-{% if form.instance.pk %}
-  <h2 class="text-center mb-4">Редактировать товар</h2>
-{% else %}
-  <h2 class="text-center mb-4">Добавить новый товар</h2>
-{% endif %}
+  <h2 class="text-center mb-4">
+    {% if form.instance.pk %}
+      Редактировать товар
+    {% else %}
+      Добавить новый товар
+    {% endif %}
+  </h2>
 
-<div class="row mt-5 justify-content-center">
+  <div class="row mt-5 justify-content-center">
     <div class="col-md-5">
-        <div class="p-3 border rounded" style="background-color: #f8f9fa;">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="id_name" class="form-label">Название</label>
-                    <input type="text" name="name" class="form-control" id="id_name" required>
-                </div>
+      <div class="p-3 border rounded" style="background-color: #f8f9fa;">
+        <form method="post" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
 
-                <div class="mb-3">
-                    <label for="id_description" class="form-label">Описание</label>
-                    <textarea name="description" class="form-control" id="id_description" rows="3"></textarea>
+          {% for field in form %}
+            <div class="mb-3">
+              <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}
+                <div class="text-danger small">
+                  {{ field.errors|join:", " }}
                 </div>
+              {% endif %}
+            </div>
+          {% endfor %}
 
-                <div class="mb-3">
-                    <label for="id_image" class="form-label">Изображение</label>
-                    <input type="file" name="image" class="form-control" id="id_image">
-                </div>
+          <button type="submit" class="btn btn-primary">
+            {% if form.instance.pk %}Сохранить{% else %}Добавить{% endif %}
+          </button>
 
-                <div class="mb-3">
-                    <label for="id_category" class="form-label">Категория</label>
-                    {{ form.category }}
-                </div>
-
-                <div class="mb-3">
-                    <label for="id_price" class="form-label">Цена</label>
-                    <input type="number" name="price" class="form-control" id="id_price" step="0.01" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Добавить</button>
-                {% if form.instance.pk %}
-                  <a href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-danger">Отмена</a>
-                {% else %}
-                  <a href="{% url 'catalog:home' %}" class="btn btn-danger">Отмена</a>
-                {% endif %}
-            </form>
-        </div>
+          {% if form.instance.pk %}
+            <a href="{% url 'catalog:product_detail' form.instance.pk %}" class="btn btn-danger">Отмена</a>
+          {% else %}
+            <a href="{% url 'catalog:home' %}" class="btn btn-danger">Отмена</a>
+          {% endif %}
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}
