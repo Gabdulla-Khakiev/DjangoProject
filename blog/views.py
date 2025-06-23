@@ -4,8 +4,10 @@ from blog.models import BlogPost
 from blog.forms import BlogPostForm
 
 
-class BlogPostListView(ListView):
+class BlogListView(ListView):
     model = BlogPost
+    queryset = BlogPost.objects.filter(is_published=True).order_by('-created_at')
+    paginate_by = 6
 
 
 class BlogPostDetailView(DetailView):
