@@ -1,35 +1,41 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.views.generic import TemplateView, DetailView, CreateView, ListView, UpdateView, DeleteView
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from catalog.models import Product
 from catalog.forms import ProductForm
-from django.core.paginator import Paginator
 
 
-def home(request):
-    product_list = Product.objects.all().order_by('-created_at')
-    paginator = Paginator(product_list, 6)  # 6 товаров на страницу
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'home.html', {'page_obj': page_obj})
+class ProductListView(ListView):
+    model = Product
+    paginate_by = 6
+    ordering = ['-created_at']
 
 
-def contacts(request):
-    if request.method == "POST":
-        return HttpResponse("Мы с вами свяжемся.")
-    return render(request, "contacts.html")
+class ContactsView(TemplateView):
+    template_name = "catalog/contacts.html"
+
+    def post(self, request, *args, **kwargs):
+        messages.success(request, "Мы с вами свяжемся.")
+        return redirect("catalog:contacts")
 
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, "product_detail.html", {"product": product})
+class ProductDetailView(DetailView):
+    model = Product
 
 
-def add_product(request):
-    if request.method == "POST":
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    else:
-        form = ProductForm()
-    return render(request, 'add_product.html', {'form': form})
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy("catalog:home")
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:home')
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('catalog:home')
