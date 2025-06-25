@@ -1,119 +1,49 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Контакты</title>
-</head>
-<body>
-    <div class="d-flex">
-        <nav class="bg-dark text-white p-3 vh-110" style="width: 250px;">
-            <h5 class="mb-4">Меню</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item"><a href="/home/" class="nav-link text-white">Главная</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Категории</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Каталог</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white">Заказы</a></li>
-                <li class="nav-item"><a href="/contacts/" class="nav-link text-white active bg-primary">Контакты</a></li>
-            </ul>
-            <div class="mt-auto pt-3">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Пользователь</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Профиль</a></li>
-                        <li><a class="dropdown-item" href="#">Выход</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+{% extends "base.html" %}
 
-        <div class="container p-5">
-            <h2 class="text-center">Свяжитесь с нами</h2>
-            <div class="row mt-5 justify-content-center">
-                <div class="col-md-5">
-                    <div class="p-3 border rounded" style="background-color: #f8f9fa;">
-                        <form method="post" action="/contacts/" class="form-floating">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Имя</label>
-                                <input type="text" class="form-control" id="name" placeholder="Ваше имя" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Почта</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">@</span>
-                                    <input type="email" class="form-control" id="email" placeholder="Ваша почта" required>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Сообщение</label>
-                                <textarea class="form-control" id="message" rows="3" placeholder="Пару слов туда-сюда"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Отправить</button>
-                        </form>
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Свяжитесь с нами</h2>
+<div class="row mt-5 justify-content-center">
+    <div class="col-md-5">
+        <div class="p-3 border rounded" style="background-color: #f8f9fa;">
+            <form method="post" action="/contacts/" class="form-floating">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Имя</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Почта</label>
+                    <div class="input-group">
+                        <span class="input-group-text">@</span>
+                        <input type="email" class="form-control" id="email" placeholder="Ваша почта" required>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="p-3 border rounded ms-md-4" style="background-color: #f8f9fa;">
-                        <h4>Наши контакты</h4>
-                        <div class="col-lg-9 col-md-6 col-sm-12">
-                            <div class="card mb-4 box-shadow">
-                                <div class="card-body">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <td class="w-25">Страна</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-25">ИНН</td>
-                                            <td>91-1144442</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-25">Адрес</td>
-                                            <td>Redmond,WA,98052-6399</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Сообщение</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="Пару слов туда-сюда"></textarea>
                 </div>
-            </div>
-            <div>
-                <footer class="pt-4 my-md-5 pt-md-5 border-top">
-                <div class="row">
-                    <div class="col-12 col-md">
-                        SkyStore
-                        <small class="d-block mb-3 text-muted">&copy; 2023</small>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5>Категории</h5>
-                        <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Рассылки</a></li>
-                            <li><a class="text-muted" href="#">Телеграм боты</a></li>
-                            <li><a class="text-muted" href="#">Полезные утилиты</a></li>
-                            <li><a class="text-muted" href="#">Веб-приложения</a></li>
-                            <li><a class="text-muted" href="#">Микросервисы</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5>Дополнительно</h5>
-                        <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Мы пишем</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5>О нас</h5>
-                        <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="/contacts/">Контакты</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
-    </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"></script>
-</body>
-</html>
+    <div class="col-md-5">
+        <div class="p-3 border rounded ms-md-4" style="background-color: #f8f9fa;">
+            <h4>Наши контакты</h4>
+            <div class="col-lg-9 col-md-6 col-sm-12">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <tr><td class="w-25">Страна</td><td>Россия</td></tr>
+                            <tr><td class="w-25">ИНН</td><td>99-9999999</td></tr>
+                            <tr><td class="w-25">Адрес</td><td>Москва, ул. Пушкина, д. Колотушкина</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

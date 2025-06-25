@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Добавление товара{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Добавить новый товар</h2>
+<div class="row mt-5 justify-content-center">
+    <div class="col-md-5">
+        <div class="p-3 border rounded" style="background-color: #f8f9fa;">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_name" class="form-label">Название</label>
+                    <input type="text" name="name" class="form-control" id="id_name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_description" class="form-label">Описание</label>
+                    <textarea name="description" class="form-control" id="id_description" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_image" class="form-label">Изображение</label>
+                    <input type="file" name="image" class="form-control" id="id_image">
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_category" class="form-label">Категория</label>
+                    {{ form.category }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_price" class="form-label">Цена</label>
+                    <input type="number" name="price" class="form-control" id="id_price" step="0.01" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Добавить</button>
+                <a href="{% url 'catalog:home' %}" class="btn btn-danger">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

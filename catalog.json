@@ -1,44 +1,96 @@
 [
-{
-    "model": "catalog.product",
-    "pk": 1,
-    "fields": {
-        "name": "Яблоко",
-        "description": "Запретный плод Райских садов",
-        "image": "",
-        "category": 1,
-        "price": "99.98",
-        "created_at": "2025-06-20T00:28:02.540Z",
-        "updated_at": "2025-06-20T00:28:02.540Z"
-    }
-},
-{
-    "model": "catalog.product",
-    "pk": 2,
-    "fields": {
-        "name": "Помидоры",
-        "description": "Снаряд для забрасывания митингующих",
-        "image": "",
-        "category": 2,
-        "price": "69.69",
-        "created_at": "2025-06-20T00:37:48.328Z",
-        "updated_at": "2025-06-20T00:57:33.817Z"
-    }
-},
-{
+  {
     "model": "catalog.category",
     "pk": 1,
     "fields": {
-        "name": "Фрукты",
-        "description": "Сладкие плоды древесных растений"
+      "name": "Ноутбуки",
+      "description": "Разнообразные ноутбуки для работы и игр"
     }
-},
-{
+  },
+  {
     "model": "catalog.category",
     "pk": 2,
     "fields": {
-        "name": "Овощи",
-        "description": "Плоды преимущественно недревесных растений и преимцщественно не сладкие"
+      "name": "Смартфоны",
+      "description": "Современные смартфоны всех брендов"
     }
-}
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "MacBook Pro 14",
+      "description": "Мощный ноутбук от Apple с чипом M1 Pro",
+      "image": "",
+      "category": 1,
+      "price": "249990.00",
+      "created_at": "2025-06-01T10:00:00Z",
+      "updated_at": "2025-06-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "ASUS ROG Zephyrus",
+      "description": "Игровой ноутбук с видеокартой RTX 4070",
+      "image": "",
+      "category": 1,
+      "price": "179990.00",
+      "created_at": "2025-06-01T10:10:00Z",
+      "updated_at": "2025-06-01T10:10:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Lenovo ThinkPad X1",
+      "description": "Надёжный ноутбук для бизнеса",
+      "image": "",
+      "category": 1,
+      "price": "139990.00",
+      "created_at": "2025-06-01T10:20:00Z",
+      "updated_at": "2025-06-01T10:20:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "iPhone 15 Pro",
+      "description": "Флагман от Apple с титановым корпусом",
+      "image": "",
+      "category": 2,
+      "price": "199990.00",
+      "created_at": "2025-06-01T10:30:00Z",
+      "updated_at": "2025-06-01T10:30:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Samsung Galaxy S24",
+      "description": "Мощный Android-смартфон с AMOLED-экраном",
+      "image": "",
+      "category": 2,
+      "price": "159990.00",
+      "created_at": "2025-06-01T10:40:00Z",
+      "updated_at": "2025-06-01T10:40:00Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Google Pixel 8",
+      "description": "Чистый Android и лучшая камера",
+      "image": "",
+      "category": 2,
+      "price": "129990.00",
+      "created_at": "2025-06-01T10:50:00Z",
+      "updated_at": "2025-06-01T10:50:00Z"
+    }
+  }
 ]
