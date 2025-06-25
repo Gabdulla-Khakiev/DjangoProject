@@ -1,17 +1,17 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from blog.models import BlogPost
-from blog.forms import BlogPostForm
+from blog.models import Post
+from blog.forms import PostForm
 
 
-class BlogListView(ListView):
-    model = BlogPost
-    queryset = BlogPost.objects.filter(is_published=True).order_by('-created_at')
+class PostListView(ListView):
+    model = Post
+    queryset = Post.objects.filter(is_published=True).order_by('-created_at')
     paginate_by = 6
 
 
-class BlogPostDetailView(DetailView):
-    model = BlogPost
+class PostDetailView(DetailView):
+    model = Post
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
@@ -20,18 +20,18 @@ class BlogPostDetailView(DetailView):
         return obj
 
 
-class BlogPostCreateView(CreateView):
-    model = BlogPost
-    form_class = BlogPostForm
+class PostCreateView(CreateView):
+    model = Post
+    form_class = PostForm
     success_url = reverse_lazy('blog:blog_list')
 
 
-class BlogPostUpdateView(UpdateView):
-    model = BlogPost
-    form_class = BlogPostForm
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostForm
     success_url = reverse_lazy('blog:blog_list')
 
 
-class BlogPostDeleteView(DeleteView):
-    model = BlogPost
+class PostDeleteView(DeleteView):
+    model = Post
     success_url = reverse_lazy('blog:blog_list')

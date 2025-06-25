@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class BlogPost(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок")
     content = models.TextField(verbose_name="Содержимое")
     preview = models.ImageField(upload_to="blog/previews/", blank=True, null=True, verbose_name="Превью")
